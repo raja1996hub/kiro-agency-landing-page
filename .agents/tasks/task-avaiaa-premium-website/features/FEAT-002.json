@@ -1,0 +1,39 @@
+{
+  "id": "FEAT-002",
+  "type": "feat",
+  "description": "Create all JavaScript modules: Three.js ocean/wave shader background, GSAP ScrollTrigger cinematic animations, Lenis smooth scroll, custom cursor with magnetic buttons, horizontal scroll gallery, and loading screen orchestration.",
+  "status": "pending",
+  "steps": [
+    "Create js/main.js - Main orchestrator: (1) Loading screen animation - brand name reveals with clip-path/opacity animation, then slides away after 2-3 seconds. (2) Initialize all other modules after load. (3) Add 'loaded' class to body to trigger CSS transitions. (4) Coordinate initialization order: Lenis first, then GSAP, then Three.js, then cursor, then gallery.",
+    "Create js/smooth-scroll.js - Lenis smooth scroll setup: (1) Initialize Lenis with smooth scroll parameters (duration 1.2, easing, smooth wheel). (2) Create RAF loop synced with GSAP ticker. (3) Connect Lenis scroll to GSAP ScrollTrigger.update. (4) Handle anchor link clicks for smooth navigation to sections. (5) Pause/resume methods for loading screen.",
+    "Create js/three-bg.js - Ocean/wave shader background: (1) Create Three.js scene with OrthographicCamera. (2) Write custom GLSL vertex and fragment shaders that create a gentle ocean/water ripple effect with coastal gradients (teal, sand, hints of sunset). (3) Pass uniforms: time, mouse position (normalized), resolution, scroll position. (4) Animate with requestAnimationFrame synced to time uniform. (5) React to cursor movement - ripples/distortion follows mouse subtly. (6) React to scroll position - color shifts or wave intensity changes as user scrolls. (7) Handle window resize. (8) Canvas should be fixed position behind all content with low z-index.",
+    "Create js/animations.js - All GSAP ScrollTrigger animations: (1) Split text reveals - headlines animate character by character or word by word using span wrapping (wrap each word/char in a span, animate translateY and opacity). (2) Parallax depth on image/gradient placeholders - elements move at different speeds. (3) Scale-in cards for properties section - cards start at scale 0.8 opacity 0, scale up on scroll. (4) Pinned sections - About section pins while content transforms/reveals. (5) Color/gradient transitions between sections - background color morphs. (6) Fade-up reveals on body text with stagger. (7) Counter animations for any stats. (8) Section title text scramble effect - characters randomize then resolve to correct text. (9) Parallax zoom on scroll for image placeholders. (10) Clip-path reveals on gradient image placeholders - rectangular mask expands to reveal. (11) Navigation hide/show on scroll direction. (12) Hero elements stagger in after loading screen. (13) CTA buttons fade and slide up. (14) Footer elements stagger reveal.",
+    "Create js/cursor.js - Custom cursor and magnetic buttons: (1) Track mouse position with lerping for smooth follow (cursor follows with slight delay). (2) Small dot (8px) follows exactly, larger circle (40px) follows with more lag. (3) Scale up circle on hover over interactive elements (links, buttons, cards). (4) Magnetic effect on buttons - when cursor is near a button, the button slightly translates toward the cursor. (5) Change cursor style on different element types (text cursor on paragraphs, pointer on links). (6) Hide default cursor via CSS. (7) Handle touch devices - hide custom cursor on touch.",
+    "Create js/gallery.js - Horizontal scroll gallery: (1) Use GSAP ScrollTrigger to create horizontal scroll effect - the gallery section pins, and vertical scroll translates the gallery items horizontally. (2) Each gallery item has parallax speed differences. (3) Items scale slightly on center position. (4) Calculate total scroll distance based on number of items and their widths. (5) Add progress indicator or subtle scroll cue. (6) Smooth deceleration at edges."
+  ],
+  "acceptance_criteria": [
+    "All 6 JS files exist: js/main.js, js/smooth-scroll.js, js/three-bg.js, js/animations.js, js/cursor.js, js/gallery.js",
+    "js/three-bg.js contains GLSL shader code (vertexShader and fragmentShader strings) creating ocean/water ripple visuals",
+    "js/three-bg.js passes mouse position and time as uniforms to the shader",
+    "js/animations.js uses gsap.registerPlugin(ScrollTrigger) and creates multiple ScrollTrigger instances",
+    "js/animations.js includes split-text animation logic (wrapping characters/words in spans)",
+    "js/animations.js includes at least one pinned section (pin: true in ScrollTrigger config)",
+    "js/smooth-scroll.js initializes Lenis and syncs with GSAP ticker",
+    "js/cursor.js implements mouse tracking with lerp interpolation",
+    "js/cursor.js implements magnetic button effect",
+    "js/gallery.js creates horizontal scroll using ScrollTrigger pin",
+    "js/main.js orchestrates loading screen and initialization sequence",
+    "All JS files pass node --check syntax validation (no syntax errors)",
+    "The code creates rich, cinematic motion - not simple fade-ins"
+  ],
+  "verification": [
+    "Run: for f in js/main.js js/smooth-scroll.js js/three-bg.js js/animations.js js/cursor.js js/gallery.js; do node --check $f && echo \"$f OK\" || echo \"$f FAIL\"; done",
+    "Run: grep -l 'vertexShader\\|fragmentShader' js/three-bg.js (confirm shader code exists)",
+    "Run: grep -l 'ScrollTrigger' js/animations.js (confirm ScrollTrigger usage)",
+    "Run: grep -l 'Lenis' js/smooth-scroll.js (confirm Lenis initialization)",
+    "Run: grep -l 'lerp\\|magnetic' js/cursor.js (confirm cursor effects)",
+    "Run: grep -c 'pin' js/animations.js js/gallery.js (confirm pinned sections exist)"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

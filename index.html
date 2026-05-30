@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AVAIAA | Coastal Hospitality in Varkala, Kerala</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loader">
+    <div class="loader__brand">
+      <span class="loader__text">AVAIAA</span>
+    </div>
+  </div>
+
+  <!-- Noise/Grain Overlay -->
+  <div class="noise-overlay"></div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-circle"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__container">
+      <a href="#home" class="nav__logo">AVAIAA</a>
+      <ul class="nav__links">
+        <li><a href="#home" class="nav__link">HOME</a></li>
+        <li><a href="#about" class="nav__link">ABOUT</a></li>
+        <li><a href="#hostel" class="nav__link">HOSTEL</a></li>
+        <li><a href="#villa" class="nav__link">VILLA</a></li>
+        <li><a href="#gallery" class="nav__link">GALLERY</a></li>
+        <li><a href="#contact" class="nav__link">CONTACT</a></li>
+      </ul>
+      <button class="nav__hamburger" aria-label="Toggle menu">
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+        <span class="nav__hamburger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Three.js Canvas Container -->
+  <div id="three-container"></div>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero-section">
+    <div class="hero__content">
+      <h1 class="hero__headline">
+        <span class="split-char">Discover</span>
+        <span class="split-char">Your</span>
+        <span class="split-char">Perfect</span>
+        <span class="split-char">Getaway</span>
+        <span class="split-char">with</span>
+        <span class="split-char hero__brand">AVAIAA</span>
+      </h1>
+      <p class="hero__subheadline reveal">Welcome to AVAIAA: Where Comfort Meets the Waves</p>
+      <div class="hero__ctas">
+        <a href="#contact" class="btn btn-primary magnetic">Contact Us</a>
+        <a href="https://wa.me/918848753707" class="btn btn-secondary magnetic" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator">
+      <span class="hero__scroll-text">Scroll</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </section>
+
+  <!-- Properties Section -->
+  <section id="properties" class="properties-section">
+    <div class="section-container">
+      <h2 class="section-label reveal">EXPLORE</h2>
+      <div class="properties__grid">
+        <div class="property-card reveal">
+          <div class="property-card__image property-card__image--villas">
+            <div class="property-card__gradient-overlay"></div>
+          </div>
+          <div class="property-card__overlay">
+            <h3 class="property-card__title">VILLAS</h3>
+            <p class="property-card__desc">Private coastal retreats for families</p>
+          </div>
+        </div>
+        <div class="property-card reveal">
+          <div class="property-card__image property-card__image--hostels">
+            <div class="property-card__gradient-overlay"></div>
+          </div>
+          <div class="property-card__overlay">
+            <h3 class="property-card__title">HOSTELS</h3>
+            <p class="property-card__desc">Community living by the sea</p>
+          </div>
+        </div>
+        <div class="property-card reveal">
+          <div class="property-card__image property-card__image--food">
+            <div class="property-card__gradient-overlay"></div>
+          </div>
+          <div class="property-card__overlay">
+            <h3 class="property-card__title">FOOD & DRINKS</h3>
+            <p class="property-card__desc">Coastal flavors and fresh brews</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="section-container">
+      <div class="about__grid">
+        <div class="about__content">
+          <span class="section-label reveal">ABOUT AVAIAA</span>
+          <blockquote class="about__quote reveal">
+            Avaiaa was created from a love of travel, coastal living, and meaningful connections. It is a place where every traveler can find belonging, whether for a night or a season.
+          </blockquote>
+          <p class="about__text reveal">
+            Avaiaa was created as more than just a place to stay&mdash;it's a hostel shaped by the spirit of Varkala. Here, travelers connect, share stories, and find a sense of belonging by the sea.
+          </p>
+        </div>
+        <div class="about__visual reveal">
+          <div class="about__image-placeholder"></div>
+          <div class="about__decorative-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hostels Section -->
+  <section id="hostel" class="hostel-section">
+    <div class="section-container">
+      <div class="hostel__grid">
+        <div class="hostel__image-wrapper reveal">
+          <div class="hostel__image-placeholder"></div>
+          <div class="hostel__image-accent"></div>
+        </div>
+        <div class="hostel__content">
+          <span class="hostel__tag reveal">Homely Stay</span>
+          <h2 class="hostel__title reveal">Avaiaa Hostels</h2>
+          <h3 class="hostel__subtitle reveal">Dive into a Coastal Escape with Us</h3>
+          <p class="hostel__body reveal">
+            Join the AVAIAA family, where seaside adventures await! Our welcoming hostel is the perfect spot to connect with fellow travelers and enjoy the beauty of the coast.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Villas Section -->
+  <section id="villa" class="villa-section">
+    <div class="section-container">
+      <div class="villa__grid">
+        <div class="villa__content">
+          <h2 class="villa__title reveal">Avaiaa Villas</h2>
+          <h3 class="villa__subtitle reveal">Experience Serenity by the Sea with Me</h3>
+          <p class="villa__body reveal">
+            At AVAIAA, we believe that the villa is more than just a place to stay; it's where families come together to create lifelong memories. Join us for an unforgettable experience that combines the beauty of nature with the warmth of family bonding.
+          </p>
+        </div>
+        <div class="villa__image-wrapper reveal">
+          <div class="villa__image-placeholder"></div>
+          <div class="villa__image-accent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery-section">
+    <div class="section-container">
+      <div class="gallery__header">
+        <h2 class="gallery__title reveal">OUR GALLERY</h2>
+        <p class="gallery__subtitle reveal">Experience Tranquility Through My Lens</p>
+      </div>
+      <div class="gallery__scroll-container">
+        <div class="gallery__track">
+          <div class="gallery__item gallery__item--1"></div>
+          <div class="gallery__item gallery__item--2"></div>
+          <div class="gallery__item gallery__item--3"></div>
+          <div class="gallery__item gallery__item--4"></div>
+          <div class="gallery__item gallery__item--5"></div>
+          <div class="gallery__item gallery__item--6"></div>
+          <div class="gallery__item gallery__item--7"></div>
+          <div class="gallery__item gallery__item--8"></div>
+        </div>
+      </div>
+      <div class="gallery__cta reveal">
+        <a href="#" class="btn btn-primary magnetic">View All</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section">
+    <div class="section-container">
+      <div class="contact__header">
+        <h2 class="contact__title reveal">CONTACT US</h2>
+        <p class="contact__subtitle reveal">We'd Love to Hear from You at AVAIAA</p>
+      </div>
+      <form class="contact__form" action="#" method="POST">
+        <div class="contact__form-row">
+          <div class="contact__form-group">
+            <input type="text" id="firstName" name="firstName" class="contact__input" placeholder=" " required>
+            <label for="firstName" class="contact__label">First Name</label>
+          </div>
+          <div class="contact__form-group">
+            <input type="text" id="lastName" name="lastName" class="contact__input" placeholder=" " required>
+            <label for="lastName" class="contact__label">Last Name</label>
+          </div>
+        </div>
+        <div class="contact__form-group">
+          <input type="email" id="email" name="email" class="contact__input" placeholder=" " required>
+          <label for="email" class="contact__label">Email</label>
+        </div>
+        <div class="contact__form-group">
+          <input type="tel" id="phone" name="phone" class="contact__input" placeholder=" ">
+          <label for="phone" class="contact__label">Phone</label>
+        </div>
+        <div class="contact__form-group">
+          <textarea id="message" name="message" class="contact__input contact__textarea" placeholder=" " required></textarea>
+          <label for="message" class="contact__label">Message</label>
+        </div>
+        <button type="submit" class="btn btn-primary magnetic contact__submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__container">
+      <div class="footer__brand">
+        <h2 class="footer__logo">AVAIAA</h2>
+      </div>
+      <div class="footer__grid">
+        <div class="footer__col">
+          <h4 class="footer__col-title">Villa Address</h4>
+          <p class="footer__address">Twin Villas Mundayil Kavu Varkala Near Mangla Hospital Landmark Little Hut Montessori Varkala Next to R G Mill Varkala 695141</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Hostel Address</h4>
+          <p class="footer__address">Avaiaa, Devpraja villa, Kurukanni near Valiyaveetil Bhagvathy Temple Varkala 695141</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Get in Touch</h4>
+          <p class="footer__contact-item">
+            <a href="mailto:avaiaastays@gmail.com">avaiaastays@gmail.com</a>
+          </p>
+          <p class="footer__contact-item">
+            <a href="tel:+918848753707">+91 8848753707</a>
+          </p>
+          <p class="footer__contact-item">
+            <a href="tel:+918891913338">+91 8891913338</a>
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Follow Us</h4>
+          <div class="footer__socials">
+            <a href="#" class="footer__social-link" aria-label="Instagram">Instagram</a>
+            <a href="#" class="footer__social-link" aria-label="Facebook">Facebook</a>
+            <a href="#" class="footer__social-link" aria-label="LinkedIn">LinkedIn</a>
+            <a href="#" class="footer__social-link" aria-label="Threads">Threads</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2025 by Avaiaa</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r160/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="js/smooth-scroll.js"></script>
+  <script src="js/three-bg.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

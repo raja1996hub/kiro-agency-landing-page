@@ -1,0 +1,50 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete HTML structure (index.html) and CSS stylesheet (css/style.css) for the AVAIAA premium hospitality website with all sections, content, and visual design.",
+  "status": "in_progress",
+  "steps": [
+    "Create css/ directory and js/ directory under /projects/sandbox/kiro-agency-landing-page/",
+    "Create index.html with: DOCTYPE, head (meta tags, Google Fonts links for Cormorant Garamond + DM Sans, link to css/style.css), CDN script tags for Three.js (r160), GSAP (3.12.5), ScrollTrigger (3.12.5), Lenis (1.0.42), and local JS files (main.js, smooth-scroll.js, three-bg.js, animations.js, cursor.js, gallery.js)",
+    "HTML sections in order: (1) Loading screen overlay with AVAIAA brand reveal, (2) Custom cursor elements (dot + circle), (3) Fixed navigation with links: HOME, ABOUT, HOSTEL, VILLA, GALLERY, CONTACT, (4) Three.js canvas container for ocean shader background, (5) Hero section - full viewport with headline 'Discover Your Perfect Getaway with AVAIAA', subheadline 'Welcome to AVAIAA: Where Comfort Meets the Waves', two CTAs 'Contact Us' and 'WhatsApp', (6) Properties section with 3 large cards: VILLAS, HOSTELS, FOOD & DRINKS, (7) About section with title 'ABOUT AVAIAA' and both paragraphs of copy verbatim, (8) Hostels section with title 'Avaiaa Hostels', subtitle 'Dive into a Coastal Escape with Us', body copy, and 'Homely Stay' tag, (9) Villas section with title 'Avaiaa Villas', subtitle 'Experience Serenity by the Sea with Me', body copy, (10) Gallery section with title 'OUR GALLERY', subtitle 'Experience Tranquility Through My Lens', horizontal scroll container with 6+ image placeholders, 'View All' CTA, (11) Contact section with title 'CONTACT US', subtitle, form with fields (First name, Last name, Email, Phone, Message, Submit), (12) Footer with villa address, hostel address, email, phone numbers, social links, copyright '2025 by Avaiaa'",
+    "Add noise/grain texture overlay element (fixed position, full screen, CSS-animated)",
+    "Create css/style.css with comprehensive premium styling: CSS custom properties for color palette (deep teal #0d4f4f, warm sand #e8dcc8, sunset coral #c75b39, rich charcoal #1a1a1a, cream #f5f0eb, gold accents), typography system using clamp() for responsive sizing (hero headings 8vw+), Cormorant Garamond for headings, DM Sans for body",
+    "CSS for loading screen: full-screen overlay with z-index 9999, centered brand name with clip-path reveal animation, background in charcoal",
+    "CSS for custom cursor: two elements (small dot 8px + larger circle 40px) with pointer-events none, fixed positioning, transition for scale on hover states",
+    "CSS for navigation: fixed top, backdrop-filter blur, links with hover underline animations, semi-transparent background",
+    "CSS for hero section: full viewport height, flexbox centering, extremely large display typography, gradient text effects, CTAs with border + fill hover animations",
+    "CSS for properties cards: large cards with CSS gradient placeholders (ocean/sunset/sand themed), overlay text, scale transforms on hover, asymmetric grid layout",
+    "CSS for about section: split layout, large serif quote styling, decorative line elements",
+    "CSS for hostels section: asymmetric layout with gradient image placeholder on one side, text on other, overlapping elements for depth, 'Homely Stay' tag with pill/badge styling",
+    "CSS for villas section: contrasting dark background section, large gradient placeholder, text with generous whitespace, overlapping composition",
+    "CSS for gallery: horizontal scroll container with large items, gradient placeholders with coastal color variations, clip-path reveals",
+    "CSS for contact form: elegant form styling with floating labels or underline inputs, styled submit button with magnetic hover prep",
+    "CSS for footer: dark background, multi-column layout, social icons, address formatting",
+    "CSS for noise/grain overlay: repeating SVG noise pattern or CSS grain effect, very low opacity, pointer-events none, fixed position covering entire page",
+    "CSS utility classes: section padding, container max-widths, reveal animation states (opacity 0, transforms for initial states that JS will animate from)",
+    "All image placeholders must use beautiful CSS gradients (coastal blues, sunset oranges, sandy tones) with pseudo-element overlays and subtle noise - they should look intentional and artistic, not broken",
+    "Add depth throughout: box-shadows, overlapping elements via negative margins and z-index, text that overlaps images, decorative elements"
+  ],
+  "acceptance_criteria": [
+    "index.html exists and contains all required sections with verbatim copy from the specification",
+    "css/style.css exists and is comprehensive (500+ lines) with the full color palette, typography system, and layout for every section",
+    "All CDN URLs are correctly included: Three.js r160, GSAP 3.12.5, ScrollTrigger 3.12.5, Lenis 1.0.42",
+    "Google Fonts link includes Cormorant Garamond (300-700 weights) and DM Sans (400-700)",
+    "Navigation contains all 6 links: HOME, ABOUT, HOSTEL, VILLA, GALLERY, CONTACT",
+    "Hero has exact headline and subheadline text plus two CTAs",
+    "Footer contains both addresses, email, phone numbers, and copyright exactly as specified",
+    "Image placeholders use CSS gradients and look artistic/intentional",
+    "Loading screen overlay element exists",
+    "Custom cursor elements exist",
+    "Noise/grain texture overlay element exists",
+    "The design feels layered and deep - not flat"
+  ],
+  "verification": [
+    "Run: node -e \"const fs=require('fs'); if(!fs.existsSync('index.html')){process.exit(1)} if(!fs.existsSync('css/style.css')){process.exit(1)} console.log('Core files exist')\" in /projects/sandbox/kiro-agency-landing-page",
+    "Run: node --check js/main.js 2>&1 || true (syntax check placeholder)",
+    "Verify index.html contains key content strings: grep for 'Discover Your Perfect Getaway', 'ABOUT AVAIAA', 'Avaiaa Hostels', 'Avaiaa Villas', 'OUR GALLERY', 'CONTACT US', 'avaiaastays@gmail.com'",
+    "Verify css/style.css has 500+ lines: wc -l css/style.css"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

@@ -1,0 +1,25 @@
+{
+  "project_type": "Static HTML/CSS/JS premium website - no build tools, no bundler",
+  "language": "HTML, CSS, JavaScript (vanilla)",
+  "build_system": "None - static files served directly. CDN links for Three.js, GSAP, Lenis loaded at runtime in browser.",
+  "test_framework": "None - visual website, validated by file existence and syntax checking",
+  "build_command": "No build step required. Validate HTML syntax with: node -e \"const fs=require('fs'); const html=fs.readFileSync('index.html','utf8'); if(!html.includes('</html>')) process.exit(1); console.log('Valid HTML structure');\"",
+  "test_command": "node -e \"const fs=require('fs'); const files=['index.html','css/style.css','js/main.js','js/smooth-scroll.js','js/three-bg.js','js/animations.js','js/cursor.js','js/gallery.js']; files.forEach(f=>{if(!fs.existsSync(f)){console.error('Missing: '+f);process.exit(1)}});console.log('All files present');\"",
+  "verification_instructions": "1. Verify all required files exist. 2. Verify index.html has valid structure with all sections. 3. Verify JS files have no syntax errors using node --check. 4. Verify CSS file is non-trivial (>500 lines for a premium site).",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - greenfield static site project",
+  "environment_constraints": "INTEGRATIONS_ONLY network - cannot fetch external resources during build/validation. CDN URLs (Three.js, GSAP, Lenis, Google Fonts) are referenced in HTML but will only load when end user opens the page in their browser. All code must be self-contained in files. Use Node.js for validation only.",
+  "contribution_requirements": "Standard git workflow on feat/avaiaa-hospitality-website branch",
+  "key_patterns": "Vanilla JS with ES6+ features, CSS custom properties for theming, modular JS files each handling one concern, all libraries loaded via CDN script tags",
+  "relevant_files": [
+    "index.html",
+    "css/style.css",
+    "js/main.js",
+    "js/smooth-scroll.js",
+    "js/three-bg.js",
+    "js/animations.js",
+    "js/cursor.js",
+    "js/gallery.js"
+  ],
+  "directory_structure": "/projects/sandbox/kiro-agency-landing-page/ - root with index.html, css/ for stylesheets, js/ for scripts, assets/ for future images"
+}

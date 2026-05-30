@@ -1,0 +1,7 @@
+{
+  "task_id": "task-avaiaa-premium-website",
+  "task_description": "Build a world-class premium website for AVAIAA, a boutique coastal hospitality brand in Varkala, Kerala. The site must feature rich animations (Three.js ocean shader, GSAP ScrollTrigger cinematic effects, Lenis smooth scroll), premium typography, custom cursor, horizontal gallery, and a deeply layered visual design that feels cinematic rather than flat.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001", "FEAT-002"],
+  "blocked_reason": null
+}
