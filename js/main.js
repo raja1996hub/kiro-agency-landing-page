@@ -129,28 +129,6 @@
     }
 
     // =========================================================================
-    // ANCHOR LINK HANDLING VIA LENIS
-    // =========================================================================
-    function initAnchorLinks() {
-      var anchorLinks = document.querySelectorAll('a[href^="#"]');
-      anchorLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          var targetId = this.getAttribute('href');
-          if (targetId === '#') return;
-          var target = document.querySelector(targetId);
-          if (target) {
-            e.preventDefault();
-            if (window.__lenis) {
-              window.__lenis.scrollTo(target, { offset: -80, duration: 1.5 });
-            } else {
-              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }
-        });
-      });
-    }
-
-    // =========================================================================
     // CONTACT FORM HANDLER
     // =========================================================================
     function initContactForm() {
@@ -190,7 +168,6 @@
 
     // Init mobile nav and form immediately
     initMobileNav();
-    initAnchorLinks();
     initContactForm();
 
     // Start loading sequence (orchestrates everything else)

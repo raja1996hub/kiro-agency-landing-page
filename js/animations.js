@@ -103,7 +103,7 @@
     // 4. PINNED ABOUT SECTION - Pin while internal elements reveal
     // =========================================================================
     function initPinnedAbout() {
-      var aboutSection = document.querySelector('.about');
+      var aboutSection = document.querySelector('.about-section');
       if (!aboutSection) return;
 
       var quote = aboutSection.querySelector('.about__quote');
@@ -150,7 +150,7 @@
     // 5. BACKGROUND COLOR TRANSITIONS - Color morphs between sections
     // =========================================================================
     function initColorTransitions() {
-      var villaSection = document.querySelector('.villa');
+      var villaSection = document.querySelector('.villa-section');
       if (!villaSection) return;
 
       var wrapper = document.querySelector('.site-wrapper') || document.body;
@@ -273,7 +273,7 @@
     // =========================================================================
     function initClipPathReveals() {
       var wrappers = document.querySelectorAll(
-        '.hostel__image-wrapper, .villa__image-wrapper, .about__image-wrapper'
+        '.hostel__image-wrapper, .villa__image-wrapper, .about__visual'
       );
 
       wrappers.forEach(function(wrapper) {
@@ -324,7 +324,7 @@
     // =========================================================================
     function initHeroStagger() {
       var subheadline = document.querySelector('.hero__subheadline');
-      var ctas = document.querySelectorAll('.hero__cta');
+      var ctas = document.querySelectorAll('.hero__ctas .btn');
       var heroElements = [];
 
       if (subheadline) heroElements.push(subheadline);

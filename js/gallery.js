@@ -18,6 +18,17 @@
 
     if (scrollDistance <= 0) return;
 
+    // Cache item positions relative to track for performant onUpdate
+    var items = track.querySelectorAll('.gallery__item');
+    var itemOffsets = [];
+    items.forEach(function(item) {
+      itemOffsets.push({
+        el: item,
+        left: item.offsetLeft,
+        width: item.offsetWidth
+      });
+    });
+
     // Pin the gallery section and translate track horizontally on vertical scroll
     var galleryTween = gsap.to(track, {
       x: function() { return -scrollDistance; },
@@ -32,12 +43,11 @@
         invalidateOnRefresh: true,
         onUpdate: function(self) {
           // Scale effect - items near center are slightly larger
-          var items = track.querySelectorAll('.gallery__item');
           var progress = self.progress;
+          var currentX = progress * scrollDistance;
 
-          items.forEach(function(item, index) {
-            var itemRect = item.getBoundingClientRect();
-            var itemCenter = itemRect.left + itemRect.width / 2;
+          itemOffsets.forEach(function(cached) {
+            var itemCenter = cached.left + cached.width / 2 - currentX;
             var screenCenter = viewportWidth / 2;
             var distanceFromCenter = Math.abs(itemCenter - screenCenter);
             var maxDist = viewportWidth / 2;
@@ -48,8 +58,8 @@
             // Opacity: center item is 1, edges are 0.7
             var opacity = 1 - (normalizedDist * 0.3);
 
-            item.style.transform = 'scale(' + scale + ')';
-            item.style.opacity = opacity;
+            cached.el.style.transform = 'scale(' + scale + ')';
+            cached.el.style.opacity = opacity;
           });
         }
       }
@@ -63,6 +73,11 @@
         viewportWidth = window.innerWidth;
         trackWidth = track.scrollWidth;
         scrollDistance = trackWidth - viewportWidth;
+        // Refresh cached item positions
+        items.forEach(function(item, index) {
+          itemOffsets[index].left = item.offsetLeft;
+          itemOffsets[index].width = item.offsetWidth;
+        });
         ScrollTrigger.refresh();
       }, 250);
     });
