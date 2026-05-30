@@ -1,48 +1,105 @@
-// Gallery horizontal scroll and interactions
 (function() {
   'use strict';
 
   function initGallery() {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    var gallerySection = document.querySelector('.gallery-section, .gallery');
     var track = document.querySelector('.gallery__track');
-    if (!track) return;
 
-    var isDown = false;
-    var startX;
-    var scrollLeft;
+    if (!gallerySection || !track) return;
 
-    // Mouse drag scrolling
-    track.addEventListener('mousedown', function(e) {
-      isDown = true;
-      track.style.cursor = 'grabbing';
-      startX = e.pageX - track.offsetLeft;
-      scrollLeft = track.scrollLeft;
+    // Calculate total scroll distance
+    var trackWidth = track.scrollWidth;
+    var viewportWidth = window.innerWidth;
+    var scrollDistance = trackWidth - viewportWidth;
+
+    if (scrollDistance <= 0) return;
+
+    // Pin the gallery section and translate track horizontally on vertical scroll
+    var galleryTween = gsap.to(track, {
+      x: function() { return -scrollDistance; },
+      ease: 'none',
+      scrollTrigger: {
+        trigger: gallerySection,
+        start: 'top top',
+        end: function() { return '+=' + scrollDistance; },
+        pin: true,
+        scrub: 1,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: function(self) {
+          // Scale effect - items near center are slightly larger
+          var items = track.querySelectorAll('.gallery__item');
+          var progress = self.progress;
+
+          items.forEach(function(item, index) {
+            var itemRect = item.getBoundingClientRect();
+            var itemCenter = itemRect.left + itemRect.width / 2;
+            var screenCenter = viewportWidth / 2;
+            var distanceFromCenter = Math.abs(itemCenter - screenCenter);
+            var maxDist = viewportWidth / 2;
+            var normalizedDist = Math.min(distanceFromCenter / maxDist, 1);
+
+            // Scale: center item is 1.05, edges are 0.92
+            var scale = 1.05 - (normalizedDist * 0.13);
+            // Opacity: center item is 1, edges are 0.7
+            var opacity = 1 - (normalizedDist * 0.3);
+
+            item.style.transform = 'scale(' + scale + ')';
+            item.style.opacity = opacity;
+          });
+        }
+      }
     });
 
-    track.addEventListener('mouseleave', function() {
-      isDown = false;
-      track.style.cursor = 'grab';
+    // Recalculate on resize
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        viewportWidth = window.innerWidth;
+        trackWidth = track.scrollWidth;
+        scrollDistance = trackWidth - viewportWidth;
+        ScrollTrigger.refresh();
+      }, 250);
     });
 
-    track.addEventListener('mouseup', function() {
-      isDown = false;
-      track.style.cursor = 'grab';
+    // Subtle parallax on individual gallery items
+    var items = track.querySelectorAll('.gallery__item');
+    items.forEach(function(item, index) {
+      var placeholder = item.querySelector('.gallery__item-placeholder');
+      if (placeholder) {
+        gsap.fromTo(placeholder,
+          { scale: 1.1 },
+          {
+            scale: 1,
+            ease: 'none',
+            scrollTrigger: {
+              trigger: gallerySection,
+              start: 'top top',
+              end: function() { return '+=' + scrollDistance; },
+              scrub: 1
+            }
+          }
+        );
+      }
     });
-
-    track.addEventListener('mousemove', function(e) {
-      if (!isDown) return;
-      e.preventDefault();
-      var x = e.pageX - track.offsetLeft;
-      var walk = (x - startX) * 2;
-      track.scrollLeft = scrollLeft - walk;
-    });
-
-    // Set initial cursor style
-    track.style.cursor = 'grab';
   }
 
+  // Export for main.js orchestration
+  window.__initGallery = initGallery;
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGallery);
-  } else {
-    initGallery();
+    document.addEventListener('DOMContentLoaded', function() {
+      // Delay to let main.js orchestrate
+      setTimeout(function() {
+        if (!window.__galleryInitialized) {
+          initGallery();
+        }
+      }, 3500);
+    });
   }
 })();
