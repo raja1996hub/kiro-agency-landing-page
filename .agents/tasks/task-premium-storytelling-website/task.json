@@ -1,0 +1,7 @@
+{
+  "task_id": "task-premium-storytelling-website",
+  "task_description": "Build a complete premium storytelling website with Three.js interactive background, GSAP ScrollTrigger cinematic animations, and Lenis smooth scrolling. Dark theme, AI/innovation content, inspired by avaiaa.com aesthetic. Pure static HTML/CSS/JS with CDN-loaded libraries.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

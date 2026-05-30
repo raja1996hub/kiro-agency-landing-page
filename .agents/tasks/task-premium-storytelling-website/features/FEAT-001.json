@@ -1,0 +1,34 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Create the complete HTML structure, CSS styling, and JavaScript for the premium storytelling website. This includes: index.html with all sections and CDN script references, css/style.css with dark theme and premium styling, js/smooth-scroll.js for Lenis initialization, js/three-background.js for the interactive Three.js canvas, js/animations.js for GSAP ScrollTrigger animations, and js/main.js as the main orchestrator.",
+  "status": "in_progress",
+  "steps": [
+    "Create directory structure: css/, js/, assets/",
+    "Create index.html with: (a) CDN script tags for Three.js (https://unpkg.com/three@0.160.0/build/three.min.js - use non-module version), GSAP (https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js), ScrollTrigger (https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js), Lenis (https://unpkg.com/lenis@1.0.42/dist/lenis.min.js), and Google Fonts (Inter + Playfair Display from fonts.googleapis.com). (b) Semantic sections: nav, hero, 4 chapter sections (AI Vision, Intelligence, Innovation, Future), services/features grid, contact/CTA, footer. (c) Script tags loading js/smooth-scroll.js, js/three-background.js, js/animations.js, js/main.js in correct order.",
+    "Create css/style.css with: (a) CSS custom properties for dark theme colors (deep purples #1a0533, blues #0a1628, warm golds #d4a853, accent purples #7c3aed). (b) Global reset and base styles with dark background. (c) Typography with Google Fonts (Playfair Display for headings, Inter for body). (d) Navigation: fixed, minimal, glassmorphism backdrop-blur, hide/show on scroll behavior. (e) Hero section: full viewport height, centered text, layered above Three.js canvas. (f) Chapter sections: full viewport height each, generous padding, centered content. (g) Fluid color transitions between sections using CSS gradients. (h) Services grid with glassmorphism cards (backdrop-filter blur, semi-transparent borders). (i) Grain/noise texture overlay using CSS (repeating SVG noise pattern via pseudo-element). (j) Responsive design with mobile breakpoints. (k) Large bold typography with generous letter-spacing. (l) Smooth opacity and transform utility classes for GSAP targets.",
+    "Create js/smooth-scroll.js: Initialize Lenis smooth scroll with premium feel settings (duration, easing). Set up RAF loop. Integrate with GSAP ScrollTrigger via lenis.on('scroll', ScrollTrigger.update) and gsap.ticker.add for sync. Export/expose lenis instance globally on window.",
+    "Create js/three-background.js: (a) Create fullscreen canvas positioned fixed behind content (z-index: -1). (b) Set up Three.js scene, camera (orthographic for 2D feel), renderer with alpha. (c) Create organic/painted texture effect using custom shader material - fragment shader that creates flowing, abstract color blobs that react to mouse position (pass mouse coords as uniform). (d) Use noise-based patterns (implement simplex noise in shader) with smooth color gradients (deep purples, blues, subtle golds). (e) Animate with requestAnimationFrame, updating time uniform for constant subtle motion. (f) Track mouse position and pass as uniforms for interactive cursor reaction. (g) Handle window resize. (h) Keep performance in mind - use reasonable resolution (maybe half-res on mobile).",
+    "Create js/animations.js: (a) Register ScrollTrigger plugin. (b) Create cinematic reveal animations for each chapter section using ScrollTrigger: text elements fade up and slide in with stagger, chapter numbers scale from large to normal, section backgrounds transition colors. (c) Hero section: elements animate in on page load (not scroll) with staggered timeline. (d) Parallax effects: different elements within sections move at different speeds on scroll. (e) Services cards: staggered reveal as they enter viewport. (f) Navigation: auto-hide on scroll down, show on scroll up. (g) Pin sections briefly for cinematic feel (scrub-based animations). (h) Color transitions: use ScrollTrigger to interpolate body/section background colors as user scrolls between chapters.",
+    "Create js/main.js: (a) Wait for DOM ready. (b) Initialize smooth scroll (call function from smooth-scroll.js). (c) Initialize Three.js background (call function from three-background.js). (d) Initialize all GSAP animations (call function from animations.js). (e) Add any loading state / reveal-on-load logic. (f) Handle any global state coordination between modules."
+  ],
+  "acceptance_criteria": [
+    "All files exist in the correct directory structure: index.html, css/style.css, js/main.js, js/three-background.js, js/animations.js, js/smooth-scroll.js",
+    "index.html has proper CDN script tags for Three.js, GSAP, ScrollTrigger, Lenis, and Google Fonts",
+    "index.html contains hero, 4+ chapter sections, services grid, CTA, navigation, and footer",
+    "css/style.css implements dark theme with rich accent colors, glassmorphism cards, responsive design, grain texture overlay",
+    "js/smooth-scroll.js initializes Lenis and integrates with GSAP ScrollTrigger",
+    "js/three-background.js creates a fullscreen interactive canvas with shader-based organic visuals reacting to cursor",
+    "js/animations.js uses GSAP ScrollTrigger for cinematic section reveals, parallax, staggered text animations, and color transitions",
+    "js/main.js orchestrates initialization of all modules",
+    "All JS files pass syntax validation with node --check (noting they reference browser globals like window, document, THREE, gsap, Lenis)"
+  ],
+  "verification": [
+    "Run: ls -la /projects/sandbox/kiro-agency-landing-page/index.html /projects/sandbox/kiro-agency-landing-page/css/style.css /projects/sandbox/kiro-agency-landing-page/js/main.js /projects/sandbox/kiro-agency-landing-page/js/three-background.js /projects/sandbox/kiro-agency-landing-page/js/animations.js /projects/sandbox/kiro-agency-landing-page/js/smooth-scroll.js",
+    "Verify HTML structure contains all required sections by checking for key elements",
+    "Verify CSS has dark theme colors, glassmorphism, responsive breakpoints",
+    "Verify JS files reference the correct global libraries (THREE, gsap, ScrollTrigger, Lenis)"
+  ],
+  "blocked_reason": null,
+  "findings": ""
+}

@@ -1,0 +1,23 @@
+{
+  "project_type": "Static HTML/CSS/JS premium storytelling website",
+  "language": "HTML, CSS, JavaScript",
+  "build_system": "None - pure static files, no build tools or bundlers",
+  "test_framework": "None - visual verification only",
+  "build_command": "N/A - static files, verify HTML validity only",
+  "test_command": "N/A - no automated tests, verify files exist and are syntactically correct",
+  "verification_instructions": "1. Verify all files exist in the expected structure. 2. Check HTML is well-formed. 3. Verify JS files have no syntax errors using node --check. 4. Confirm CDN URLs are properly referenced in index.html.",
+  "snapshot_or_generated_files": null,
+  "setup_instructions": "No setup needed - pure static files. Just create the directory structure and files.",
+  "environment_constraints": "INTEGRATIONS_ONLY network - cannot install npm packages, cannot fetch from CDNs during build. All libraries (Three.js, GSAP, ScrollTrigger, Lenis) must be loaded via CDN script tags in HTML. They will load in the user's browser at runtime, not during development/build. Use regular script tags (not ES modules with import maps) for maximum compatibility.",
+  "contribution_requirements": "No CONTRIBUTING.md - greenfield project",
+  "key_patterns": "Premium storytelling website inspired by avaiaa.com. Dark theme, cinematic scroll animations, Three.js interactive background, GSAP ScrollTrigger for section reveals, Lenis for smooth scrolling. All libraries loaded from CDN at runtime in user's browser.",
+  "relevant_files": [
+    "index.html",
+    "css/style.css",
+    "js/main.js",
+    "js/three-background.js",
+    "js/animations.js",
+    "js/smooth-scroll.js"
+  ],
+  "directory_structure": "/projects/sandbox/kiro-agency-landing-page/ - root with index.html, css/ for styles, js/ for scripts, assets/ for static resources"
+}
