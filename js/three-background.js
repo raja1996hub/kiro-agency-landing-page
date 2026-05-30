@@ -154,15 +154,34 @@ function initThreeBackground() {
   // Window resize
   function onResize() {
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     uniforms.uResolution.value.set(window.innerWidth, window.innerHeight);
   }
   window.addEventListener('resize', onResize);
 
-  // Animation loop
+  // Animation loop with visibility-based pause/resume
   var startTime = Date.now();
+  var isTabVisible = true;
+  var animationId = null;
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      isTabVisible = false;
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    } else {
+      isTabVisible = true;
+      if (!animationId) {
+        animate();
+      }
+    }
+  });
 
   function animate() {
-    requestAnimationFrame(animate);
+    if (!isTabVisible) return;
+    animationId = requestAnimationFrame(animate);
 
     // Smooth mouse interpolation
     mouse.x += (targetMouse.x - mouse.x) * 0.05;

@@ -11,6 +11,16 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Fallback: make content visible if JS is disabled -->
+  <noscript>
+    <style>
+      .reveal-text, .reveal-up, .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    </style>
+  </noscript>
 </head>
 <body>
   <!-- Three.js Canvas Background -->
@@ -30,8 +40,22 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
       </ul>
+      <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" aria-hidden="true">
+    <a href="#vision">Vision</a>
+    <a href="#intelligence">Intelligence</a>
+    <a href="#innovation">Innovation</a>
+    <a href="#services">Services</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
 
   <!-- Hero Section -->
   <section class="hero">

@@ -521,10 +521,105 @@ img {
   transform: translateY(40px);
 }
 
-body.loaded .hero .reveal-text,
-body.loaded .hero .reveal-up,
-body.loaded .hero .fade-in {
-  /* Hero elements animate via GSAP - this is a fallback if JS fails */
+/* Fallback: make content visible if GSAP/JS fails to load */
+body.content-visible .reveal-text,
+body.content-visible .reveal-up,
+body.content-visible .fade-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* noscript fallback is handled via inline style in index.html */
+
+/* ============================================
+   Mobile Hamburger Menu
+   ============================================ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  z-index: 1010;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-hamburger.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-hamburger.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1001;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu-overlay a {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  transition: color 0.3s ease;
+}
+
+.mobile-menu-overlay a:hover {
+  color: var(--color-text);
+}
+
+.mobile-menu-overlay .nav-cta {
+  margin-top: 1rem;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .mobile-menu-overlay {
+    display: flex;
+  }
 }
 
 /* ============================================
